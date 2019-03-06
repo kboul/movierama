@@ -19,12 +19,20 @@ export const moviesCard = movies => {
                                 ${circularBar(votePercentage)}
                             </div>
                             <div class="col-10">
-                                <a id="movieTitle">
-                                    ${title}
-                                </a>
-                                <span id="date">
-                                    ${release_date}
-                                </span>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <a id="movieTitle">
+                                            ${title}
+                                        </a>
+                                        <span id="date">
+                                            ${release_date}
+                                        </span>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        right
+                                    </div>
+                                </div>
+                               
                             </div>
                         </div>
                         <p class="card-text mb-auto" id="overview">
@@ -33,10 +41,10 @@ export const moviesCard = movies => {
                         <p id="viewMore">
                             <a>More Info</a>
                         </p>
-                    </div>
-                </div>
-            </div>
-        `
+                    </div >
+                </div >
+            </div >
+    `
     })
     // console.log(htmlChunk)
     return htmlChunk
