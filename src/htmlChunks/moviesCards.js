@@ -1,5 +1,6 @@
 import { circularBar } from "./circularBar"
 import { cardImage } from './cardImage'
+import { convertDate } from "../utils/convertDate"
 
 export const moviesCard = movies => {
     let htmlChunk = ''
@@ -25,7 +26,7 @@ export const moviesCard = movies => {
                                             ${title}
                                         </a>
                                         <span id="date">
-                                            ${release_date}
+                                            ${convertDate(release_date)}
                                         </span>
                                     </div>
                                     <div class="col-4 text-right">
