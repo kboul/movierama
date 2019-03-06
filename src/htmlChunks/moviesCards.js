@@ -1,16 +1,17 @@
 import { circularBar } from "./circularBar"
+import { cardImage } from './cardImage'
 
 export const moviesCard = movies => {
     let htmlChunk = ''
 
-    movies.forEach(({ vote_average, title, release_date, overview }) => {
+    movies.forEach(({ vote_average, title, release_date, overview, poster_path }) => {
         const votePercentage = vote_average * 10
 
         htmlChunk += `
             <div class="col-md-6">
                 <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                        ${cardImage(poster_path)}
                     </div>    
                     <div class="col d-flex flex-column" id="infoBox">
                         <div class="row">
