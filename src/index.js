@@ -1,3 +1,4 @@
+import './libs/css-circular-prog-bar'
 import 'bootstrap/dist/css/bootstrap.css'
 import "./styles.css"
 import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
