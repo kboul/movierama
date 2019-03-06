@@ -1,8 +1,12 @@
-let details = ''
+import { circularBar } from "./circularBar"
 
 export const moviesCard = movies => {
+    let htmlChunk = ''
+
     movies.forEach(({ vote_average, title, release_date, overview }) => {
-        details += `
+        const votePercentage = vote_average * 10
+
+        htmlChunk += `
             <div class="col-md-6">
                 <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col-auto d-none d-lg-block">
@@ -11,7 +15,7 @@ export const moviesCard = movies => {
                     <div class="col d-flex flex-column" id="infoBox">
                         <div class="row">
                             <div class="col-2">
-                                ${vote_average}
+                                ${circularBar(votePercentage)}
                             </div>
                             <div class="col-10">
                                 <a id="movieTitle">
@@ -33,6 +37,6 @@ export const moviesCard = movies => {
             </div>
         `
     })
-    // console.log(details)
-    return details
+    // console.log(htmlChunk)
+    return htmlChunk
 }
