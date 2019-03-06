@@ -1,6 +1,7 @@
 import { circularBar } from "./circularBar"
 import { cardImage } from './cardImage'
 import { convertDate } from "../utils/convertDate"
+import { textDelimeter } from "../utils/textDelimeter"
 
 export const moviesCard = movies => {
     let htmlChunk = ''
@@ -37,7 +38,7 @@ export const moviesCard = movies => {
                             </div>
                         </div>
                         <p class="card-text mb-auto" id="overview">
-                            ${overview.substring(0, 212)}
+                            ${textDelimeter(overview)}
                         </p>
                         <p id="viewMore">
                             <a>More Info</a>
