@@ -1,3 +1,39 @@
-body {
-  font-family: sans-serif;
+#infoBox {
+    padding: 10px 16px 16px 16px
+}
+
+#movieTitle {
+    width: 100%;
+    display: block;
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height: 1.1em;
+}
+
+#overview {
+    overflow-wrap: break-word;
+    white-space: normal;
+    color: rgb(77, 77, 77);
+    font-size: 0.9em;
+    line-height: 1.2em;
+    margin-top: 30px;
+}
+
+#date {
+    color: rgba(0,0,0,0.6);
+    line-height: 1em;
+}
+
+p#viewMore {
+    border-top: 1px solid #e3e3e3;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding-left: 16px;
+    left: 0;
+}
+
+#viewMore a {
+    font-size: 0.9em;
+    font-weight: 400;
 }
