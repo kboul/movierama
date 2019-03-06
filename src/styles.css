@@ -1,3 +1,4 @@
+/* movies cards */
 #infoBox {
     padding: 10px 16px 16px 16px
 }
@@ -36,4 +37,27 @@ p#viewMore {
 #viewMore a {
     font-size: 0.9em;
     font-weight: 400;
+}
+
+/* progress bar */ 
+
+/* remaining-fill */
+.progress-circle {
+    background-color: rgb(128, 128, 128); 
+    font-size: 8px;
+    margin: 0px;
+}
+
+.progress-circle:after{
+    background-color: black;
+}
+
+/* change text inside progress-bar */
+.progress-circle span {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0px;
+    top: -10px;
+    right: -10px;
 }
