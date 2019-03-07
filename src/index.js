@@ -4,12 +4,16 @@ import 'font-awesome/css/font-awesome.min.css'
 import "./styles.css"
 import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
 import { moviesCard } from './htmlChunks/moviesCards'
+import { toggleSpinner } from './utils/toggleSpinner'
 
 let moviesNowPlaying = []
+
+toggleSpinner('show')
 
 getMoviesNowPlaying(1).then(response => {
     const { data: { results } } = response
     moviesNowPlaying = [...results]
+    toggleSpinner('hide')
     buildMovieCards(moviesNowPlaying)
 })
 
@@ -32,14 +36,14 @@ const infiniteScroll = () => {
 
         console.log("Fetching more movies...")
         // display spinner
-        document.getElementsByClassName('fa-spin')[0].classList.add('fa-spinner')
+        toggleSpinner('show')
 
         getMoviesNowPlaying(i).then(response => {
             const { data: { results } } = response
             // update now playing movies with old and new
             moviesNowPlaying = [...moviesNowPlaying, ...results]
             // remove spinner
-            document.getElementsByClassName('fa-spin')[0].classList.remove('fa-spinner')
+            toggleSpinner('hide')
             // rebuild the whole cardContainer with the new lsit of movies
             buildMovieCards(moviesNowPlaying)
         })
