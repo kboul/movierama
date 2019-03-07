@@ -11,5 +11,5 @@ export const textDelimeter = text => {
     wordSplit.forEach((el, i) => {
         if (i < 39) words.push(el)
     })
-    return `${words.join(' ')} ...`
+    return `${words.join(' ')}...`
 }
