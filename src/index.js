@@ -31,14 +31,16 @@ const infiniteScroll = () => {
         i++
 
         console.log("Fetching more movies...")
+        // display spinner
         document.getElementsByClassName('fa-spin')[0].classList.add('fa-spinner')
+
         getMoviesNowPlaying(i).then(response => {
             const { data: { results } } = response
             // update now playing movies with old and new
             moviesNowPlaying = [...moviesNowPlaying, ...results]
-            // rebuild the whole cardContainer with the new lsit of movies
+            // remove spinner
             document.getElementsByClassName('fa-spin')[0].classList.remove('fa-spinner')
-
+            // rebuild the whole cardContainer with the new lsit of movies
             buildMovieCards(moviesNowPlaying)
         })
 
