@@ -1,5 +1,6 @@
 import './libs/css-circular-prog-bar'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'font-awesome/css/font-awesome.min.css'
 import "./styles.css"
 import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
 import { moviesCard } from './htmlChunks/moviesCards'
@@ -30,11 +31,14 @@ const infiniteScroll = () => {
         i++
 
         console.log("Fetching more movies...")
+        document.getElementsByClassName('fa-spin')[0].classList.add('fa-spinner')
         getMoviesNowPlaying(i).then(response => {
             const { data: { results } } = response
             // update now playing movies with old and new
             moviesNowPlaying = [...moviesNowPlaying, ...results]
             // rebuild the whole cardContainer with the new lsit of movies
+            document.getElementsByClassName('fa-spin')[0].classList.remove('fa-spinner')
+
             buildMovieCards(moviesNowPlaying)
         })
 
