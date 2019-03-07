@@ -1,5 +1,5 @@
 import http, { API_KEY } from './httpService'
 
-const apiEndpoint = `movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
+const apiEndpoint = `movie/now_playing?api_key=${API_KEY}&language=en-US`
 
-export const getMoviesNowPlaying = () => http.get(apiEndpoint)
+export const getMoviesNowPlaying = page => http.get(`${apiEndpoint}&page=${page}`)

@@ -6,7 +6,7 @@ import { moviesCard } from './htmlChunks/moviesCards'
 
 let moviesNowPlaying = []
 
-getMoviesNowPlaying().then(response => {
+getMoviesNowPlaying(1).then(response => {
     const { data: { results } } = response
     moviesNowPlaying = [...results]
     buildMovieCards(moviesNowPlaying)
