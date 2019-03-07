@@ -14,3 +14,34 @@ getMoviesNowPlaying(1).then(response => {
 
 const buildMovieCards = movies =>
     document.getElementById("cardContainer").innerHTML = moviesCard(movies)
+
+window.onscroll = () => infiniteScroll()
+
+// is used to remember if the function was executed.
+var isExecuted = false
+// is used to track the pages the enpoint is gonna hit 
+let i = 1
+
+const infiniteScroll = () => {
+    // Inside the "if" statement the "isExecuted" variable is negated to allow initial code execution.
+    if (window.scrollY > (document.body.offsetHeight - window.outerHeight) && !isExecuted) {
+        // Set "isExecuted" to "true" to prevent further execution
+        isExecuted = true
+        i++
+
+        console.log("Fetching more movies...")
+        getMoviesNowPlaying(i).then(response => {
+            const { data: { results } } = response
+            // update now playing movies with old and new
+            moviesNowPlaying = [...moviesNowPlaying, ...results]
+            // rebuild the whole cardContainer with the new lsit of movies
+            buildMovieCards(moviesNowPlaying)
+        })
+
+        // After 1 second the "isExecuted" will be set to "false" to allow the code 
+        // inside the "if" statement to be executed again
+        setTimeout(() => {
+            isExecuted = false
+        }, 1000)
+    }
+}
