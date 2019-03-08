@@ -7,6 +7,7 @@ import { toggleSpinner } from './utils/toggleSpinner'
 import { getSearchMovies } from './services/searchMovies'
 import { buildMovieCards } from './buildDom/buildMovieCards'
 import { buildSearchInput } from './buildDom/buildSearchInput'
+import debounce from 'lodash.debounce'
 
 let moviesNowPlaying = []
 
@@ -57,10 +58,15 @@ const infiniteScroll = () => {
 
 const onMoviesSearch = () => {
     document.getElementById('searchInput').onkeyup = e => {
-        console.log(e.target.value)
-        getSearchMovies(1, e.target.value).then(response => {
-            const { data: { results } } = response
-            console.log(results)
-        })
+        const value = e.target.value
+        console.log(value)
+        searchAndDisplayMovies(1, value)
     }
 }
+
+const searchAndDisplayMovies = debounce((page, value) => {
+    getSearchMovies(page, value).then(response => {
+        const { data: { results } } = response
+        console.log(results)
+    })
+}, 1000)
