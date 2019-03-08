@@ -9,6 +9,7 @@ export const searchInput = () => {
         <input 
             type="text" 
             class="form-control" 
+            id="searchInput"
             placeholder="Search for a movie..." 
             aria-label="Search"
             aria-describedby="addon-wrapping">
