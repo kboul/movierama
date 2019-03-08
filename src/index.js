@@ -19,7 +19,6 @@ const fetchAndDisplayMovies = page => {
         moviesNowPlaying = isExecuted ?
             [...moviesNowPlaying, ...results] :
             [...results]
-        console.log(moviesNowPlaying)
         toggleSpinner('hide')
         buildMovieCards(moviesNowPlaying)
     })
@@ -65,8 +64,15 @@ const onMoviesSearch = () => {
 }
 
 const searchAndDisplayMovies = debounce((page, value) => {
+    // if query is empty display now playing movies & return
+    if (value === '') {
+        fetchAndDisplayMovies(1)
+        return
+    }
+
     getSearchMovies(page, value).then(response => {
         const { data: { results } } = response
-        console.log(results)
+        moviesNowPlaying = [...results]
+        buildMovieCards(moviesNowPlaying)
     })
 }, 1000)
