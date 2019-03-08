@@ -23,7 +23,7 @@ const buildMovieCards = movies =>
     document.getElementById("cardContainer").innerHTML = moviesCard(movies)
 
 const buildSearchInput = () =>
-    document.getElementById("searchInput").innerHTML = searchInput()
+    document.getElementById("searchInputContainer").innerHTML = searchInput()
 
 window.onscroll = () => infiniteScroll()
 
