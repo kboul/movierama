@@ -22,8 +22,10 @@ getMoviesNowPlaying(1).then(response => {
 const buildMovieCards = movies =>
     document.getElementById("cardContainer").innerHTML = moviesCard(movies)
 
-const buildSearchInput = () =>
+const buildSearchInput = () => {
     document.getElementById("searchInputContainer").innerHTML = searchInput()
+    onSearch()
+}
 
 window.onscroll = () => infiniteScroll()
 
@@ -57,5 +59,11 @@ const infiniteScroll = () => {
         setTimeout(() => {
             isExecuted = false
         }, 1000)
+    }
+}
+
+const onSearch = () => {
+    document.getElementById('searchInput').onkeyup = (e) => {
+        console.log(e.target.value)
     }
 }
