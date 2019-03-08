@@ -9,15 +9,22 @@ import { searchInput } from './htmlChunks/searchInput'
 
 let moviesNowPlaying = []
 
-toggleSpinner('show')
+const fetchAndDisplayMovies = page => {
+    toggleSpinner('show')
 
-getMoviesNowPlaying(1).then(response => {
-    const { data: { results } } = response
-    moviesNowPlaying = [...results]
-    toggleSpinner('hide')
-    buildMovieCards(moviesNowPlaying)
-    buildSearchInput()
-})
+    getMoviesNowPlaying(page).then(response => {
+        const { data: { results } } = response
+        moviesNowPlaying = isExecuted ?
+            [...moviesNowPlaying, ...results] :
+            [...results]
+        console.log(moviesNowPlaying)
+        toggleSpinner('hide')
+        buildMovieCards(moviesNowPlaying)
+    })
+}
+
+fetchAndDisplayMovies(1)
+setTimeout(() => buildSearchInput(), 200)
 
 const buildMovieCards = movies =>
     document.getElementById("cardContainer").innerHTML = moviesCard(movies)
@@ -30,7 +37,7 @@ const buildSearchInput = () => {
 window.onscroll = () => infiniteScroll()
 
 // is used to remember if the function was executed.
-var isExecuted = false
+let isExecuted = false
 // is used to track the movies now playing 
 // pages the enpoint is gonna hit 
 let i = 1
@@ -42,17 +49,7 @@ const infiniteScroll = () => {
         isExecuted = true
         i++
 
-        // console.log("Fetching more movies...")
-        toggleSpinner('show')
-
-        getMoviesNowPlaying(i).then(response => {
-            const { data: { results } } = response
-            // update now playing movies with old and new
-            moviesNowPlaying = [...moviesNowPlaying, ...results]
-            toggleSpinner('hide')
-            // rebuild the whole cardContainer with the new lsit of movies
-            buildMovieCards(moviesNowPlaying)
-        })
+        fetchAndDisplayMovies(i)
 
         // After 1 second the "isExecuted" will be set to "false" to allow the code 
         // inside the "if" statement to be executed again
