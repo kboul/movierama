@@ -32,7 +32,7 @@ const buildMovieCards = movies =>
 
 const buildSearchInput = () => {
     document.getElementById("searchInputContainer").innerHTML = searchInput()
-    onSearch()
+    onMoviesSearch()
 }
 
 window.onscroll = () => infiniteScroll()
@@ -60,8 +60,8 @@ const infiniteScroll = () => {
     }
 }
 
-const onSearch = () => {
-    document.getElementById('searchInput').onkeyup = (e) => {
+const onMoviesSearch = () => {
+    document.getElementById('searchInput').onkeyup = e => {
         console.log(e.target.value)
         getSearchMovies(1, e.target.value).then(response => {
             const { data: { results } } = response
