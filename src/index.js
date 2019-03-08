@@ -3,10 +3,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.min.css'
 import "./styles.css"
 import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
-import { moviesCard } from './htmlChunks/moviesCards'
 import { toggleSpinner } from './utils/toggleSpinner'
-import { searchInput } from './htmlChunks/searchInput'
 import { getSearchMovies } from './services/searchMovies'
+import { buildMovieCards } from './buildDom/buildMovieCards'
+import { buildSearchInput } from './buildDom/buildSearchInput'
 
 let moviesNowPlaying = []
 
@@ -25,15 +25,10 @@ const fetchAndDisplayMovies = page => {
 }
 
 fetchAndDisplayMovies(1)
-setTimeout(() => buildSearchInput(), 200)
-
-const buildMovieCards = movies =>
-    document.getElementById("cardContainer").innerHTML = moviesCard(movies)
-
-const buildSearchInput = () => {
-    document.getElementById("searchInputContainer").innerHTML = searchInput()
+setTimeout(() => {
+    buildSearchInput()
     onMoviesSearch()
-}
+}, 200)
 
 window.onscroll = () => infiniteScroll()
 
