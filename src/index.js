@@ -10,6 +10,7 @@ import { buildSearchInput } from './buildDom/buildSearchInput'
 import debounce from 'lodash.debounce'
 
 let moviesNowPlaying = []
+let searchedMovies = []
 
 const fetchAndDisplayMovies = page => {
     toggleSpinner('show')
@@ -37,15 +38,26 @@ let isExecuted = false
 // is used to track the movies now playing 
 // pages the enpoint is gonna hit 
 let i = 1
+// track the search movies pages for infinite scrolling
+let y = 1
 
 const infiniteScroll = () => {
     // Inside the "if" statement the "isExecuted" variable is negated to allow initial code execution.
     if (window.scrollY > (document.body.offsetHeight - window.outerHeight) && !isExecuted) {
         // Set "isExecuted" to "true" to prevent further execution
         isExecuted = true
-        i++
 
-        fetchAndDisplayMovies(i)
+        const searchInputValue = document.getElementById('searchInput').value
+        if (searchInputValue !== '') {
+            i = 1
+            y++
+            searchAndDisplayMovies(y, searchInputValue)
+        }
+        else {
+            y = 1
+            i++
+            fetchAndDisplayMovies(i)
+        }
 
         // After 1 second the "isExecuted" will be set to "false" to allow the code 
         // inside the "if" statement to be executed again
@@ -58,7 +70,6 @@ const infiniteScroll = () => {
 const onMoviesSearch = () => {
     document.getElementById('searchInput').onkeyup = e => {
         const value = e.target.value
-        console.log(value)
         searchAndDisplayMovies(1, value)
     }
 }
@@ -72,7 +83,10 @@ const searchAndDisplayMovies = debounce((page, value) => {
 
     getSearchMovies(page, value).then(response => {
         const { data: { results } } = response
-        moviesNowPlaying = [...results]
-        buildMovieCards(moviesNowPlaying)
+        const searchInputValue = document.getElementById('searchInput').value
+        searchedMovies = searchInputValue !== '' ?
+            [...searchedMovies, ...results] :
+            [...results]
+        buildMovieCards(searchedMovies)
     })
 }, 1000)
