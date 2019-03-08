@@ -24,7 +24,8 @@ window.onscroll = () => infiniteScroll()
 
 // is used to remember if the function was executed.
 var isExecuted = false
-// is used to track the pages the enpoint is gonna hit 
+// is used to track the movies now playing 
+// pages the enpoint is gonna hit 
 let i = 1
 
 const infiniteScroll = () => {
@@ -34,15 +35,13 @@ const infiniteScroll = () => {
         isExecuted = true
         i++
 
-        console.log("Fetching more movies...")
-        // display spinner
+        // console.log("Fetching more movies...")
         toggleSpinner('show')
 
         getMoviesNowPlaying(i).then(response => {
             const { data: { results } } = response
             // update now playing movies with old and new
             moviesNowPlaying = [...moviesNowPlaying, ...results]
-            // remove spinner
             toggleSpinner('hide')
             // rebuild the whole cardContainer with the new lsit of movies
             buildMovieCards(moviesNowPlaying)
