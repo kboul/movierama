@@ -5,6 +5,7 @@ import "./styles.css"
 import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
 import { moviesCard } from './htmlChunks/moviesCards'
 import { toggleSpinner } from './utils/toggleSpinner'
+import { searchInput } from './htmlChunks/searchInput'
 
 let moviesNowPlaying = []
 
@@ -15,10 +16,14 @@ getMoviesNowPlaying(1).then(response => {
     moviesNowPlaying = [...results]
     toggleSpinner('hide')
     buildMovieCards(moviesNowPlaying)
+    buildSearchInput()
 })
 
 const buildMovieCards = movies =>
     document.getElementById("cardContainer").innerHTML = moviesCard(movies)
+
+const buildSearchInput = () =>
+    document.getElementById("searchInput").innerHTML = searchInput()
 
 window.onscroll = () => infiniteScroll()
 
