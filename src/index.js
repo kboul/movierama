@@ -6,6 +6,7 @@ import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
 import { moviesCard } from './htmlChunks/moviesCards'
 import { toggleSpinner } from './utils/toggleSpinner'
 import { searchInput } from './htmlChunks/searchInput'
+import { getSearchMovies } from './services/searchMovies'
 
 let moviesNowPlaying = []
 
@@ -62,5 +63,9 @@ const infiniteScroll = () => {
 const onSearch = () => {
     document.getElementById('searchInput').onkeyup = (e) => {
         console.log(e.target.value)
+        getSearchMovies(1, e.target.value).then(response => {
+            const { data: { results } } = response
+            console.log(results)
+        })
     }
 }
