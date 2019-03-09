@@ -8,11 +8,12 @@ import { getSearchMovies } from './services/searchMovies'
 import { buildMovieCards } from './buildDom/buildMovieCards'
 import { buildSearchInput } from './buildDom/buildSearchInput'
 import debounce from 'lodash.debounce'
+import { Movies } from './interfaces/movies'
 
-let moviesNowPlaying = []
-let searchedMovies = []
+let moviesNowPlaying: Array<Movies> = []
+let searchedMovies: Array<Movies> = []
 
-const fetchAndDisplayMovies = page => {
+const fetchAndDisplayMovies = (page: number) => {
     toggleSpinner('show')
 
     getMoviesNowPlaying(page).then(response => {
@@ -34,12 +35,12 @@ setTimeout(() => {
 window.onscroll = () => infiniteScroll()
 
 // is used to remember if the function was executed.
-let isExecuted = false
+let isExecuted: boolean = false
 // is used to track the movies now playing 
 // pages the enpoint is gonna hit 
-let i = 1
+let i: number = 1
 // track the search movies pages for infinite scrolling
-let y = 1
+let y: number = 1
 
 const infiniteScroll = () => {
     // Inside the "if" statement the "isExecuted" variable is negated to allow initial code execution.
@@ -47,7 +48,8 @@ const infiniteScroll = () => {
         // Set "isExecuted" to "true" to prevent further execution
         isExecuted = true
 
-        const searchInputValue = document.getElementById('searchInput').value
+        const searchInputValue =
+            (document.getElementById('searchInput') as HTMLInputElement).value
         if (searchInputValue !== '') {
             i = 1
             y++
@@ -68,13 +70,13 @@ const infiniteScroll = () => {
 }
 
 const onMoviesSearch = () => {
-    document.getElementById('searchInput').onkeyup = e => {
-        const value = e.target.value
+    document.getElementById('searchInput').onkeyup = (e: Event) => {
+        const value = (e.target as HTMLInputElement).value
         searchAndDisplayMovies(1, value)
     }
 }
 
-const searchAndDisplayMovies = debounce((page, value) => {
+const searchAndDisplayMovies = debounce((page: number, value: string) => {
     // if query is empty display now playing movies & return
     if (value === '') {
         fetchAndDisplayMovies(1)
@@ -83,7 +85,8 @@ const searchAndDisplayMovies = debounce((page, value) => {
 
     getSearchMovies(page, value).then(response => {
         const { data: { results } } = response
-        const searchInputValue = document.getElementById('searchInput').value
+        const searchInputValue =
+            (document.getElementById('searchInput') as HTMLInputElement).value
         searchedMovies = searchInputValue !== '' ?
             [...searchedMovies, ...results] :
             [...results]
