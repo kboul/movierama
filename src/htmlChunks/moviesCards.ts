@@ -5,6 +5,9 @@ import { textDelimeter } from "../utils/textDelimeter"
 import { Movies } from '../interfaces/movies'
 
 export const moviesCard = (movies: Array<Movies>): string => {
+    if (movies.length === 0)
+        return 'No movies found. Please insert another keyword.'
+
     let htmlChunk: string = ''
 
     movies.forEach(({ vote_average, title, release_date, overview, poster_path }) => {
@@ -35,7 +38,6 @@ export const moviesCard = (movies: Array<Movies>): string => {
                                         right
                                     </div>
                                 </div>
-                               
                             </div>
                         </div>
                         <p class="card-text mb-auto" id="overview">
