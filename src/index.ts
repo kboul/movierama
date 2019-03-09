@@ -5,7 +5,7 @@ import "./styles.css"
 import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
 import { toggleSpinner } from './utils/toggleSpinner'
 import { getSearchMovies } from './services/searchMovies'
-import { buildMovieCards } from './renderHtml/buildMovieCards'
+import { buildMoviesCards } from './renderHtml/buildMoviesCards'
 import { buildSearchInput } from './renderHtml/buildSearchInput'
 import debounce from 'lodash.debounce'
 import { Movies } from './interfaces/movies'
@@ -22,7 +22,7 @@ const fetchAndDisplayMovies = (page: number) => {
             [...moviesNowPlaying, ...results] :
             [...results]
         toggleSpinner('hide')
-        buildMovieCards(moviesNowPlaying)
+        buildMoviesCards(moviesNowPlaying)
     })
 }
 
@@ -90,6 +90,6 @@ const searchAndDisplayMovies = debounce((page: number, value: string) => {
         searchedMovies = searchInputValue !== '' ?
             [...searchedMovies, ...results] :
             [...results]
-        buildMovieCards(searchedMovies)
+        buildMoviesCards(searchedMovies)
     })
 }, 1000)
