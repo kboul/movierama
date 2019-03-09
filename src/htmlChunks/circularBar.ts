@@ -1,4 +1,4 @@
-const chooseVoteColor = votePercentage => {
+const chooseVoteColor = (votePercentage: number): string => {
     return `
         ${votePercentage > 70 ? '#09b962' :
             votePercentage > 0 && votePercentage <= 70 ? '#d2d531' :
@@ -6,7 +6,7 @@ const chooseVoteColor = votePercentage => {
     `
 }
 
-export const circularBar = votePercentage => {
+export const circularBar = (votePercentage: number): string => {
     const htmlChunk = `
         <div class="progress-circle over50 p${votePercentage}">
             <span>${votePercentage != 0 ? `${votePercentage}%` : 'NR'}</span>
