@@ -1,4 +1,4 @@
-export const textDelimeter = text => {
+export const textDelimeter = (text: string): string => {
     const wordSplit = text.split(" ")
     let words = []
 
