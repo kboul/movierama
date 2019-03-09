@@ -40,7 +40,7 @@ let isExecuted: boolean = false
 // pages the enpoint is gonna hit 
 let i: number = 1
 // track the search movies pages for infinite scrolling
-let y: number = 1
+let searchedMoviesCurrentPage: number = 1
 
 const infiniteScroll = () => {
     // Inside the "if" statement the "isExecuted" variable is negated to allow initial code execution.
@@ -52,11 +52,11 @@ const infiniteScroll = () => {
             (document.getElementById('searchInput') as HTMLInputElement).value
         if (searchInputValue !== '') {
             i = 1
-            y++
-            searchAndDisplayMovies(y, searchInputValue)
+            searchedMoviesCurrentPage++
+            searchAndDisplayMovies(searchedMoviesCurrentPage, searchInputValue)
         }
         else {
-            y = 1
+            searchedMoviesCurrentPage = 1
             i++
             fetchAndDisplayMovies(i)
         }
@@ -71,6 +71,12 @@ const infiniteScroll = () => {
 
 const onMoviesSearch = () => {
     document.getElementById('searchInput').onkeyup = (e: Event) => {
+        // if searchedMovies is > 0 => a query has been made
+        // therefore another query takes place => empty the array
+        if (searchedMovies.length > 0) {
+            searchedMovies = []
+            searchedMoviesCurrentPage = 1
+        }
         const value = (e.target as HTMLInputElement).value
         searchAndDisplayMovies(1, value)
     }
@@ -85,9 +91,7 @@ const searchAndDisplayMovies = debounce((page: number, value: string) => {
 
     getSearchMovies(page, value).then(response => {
         const { data: { results } } = response
-        const searchInputValue =
-            (document.getElementById('searchInput') as HTMLInputElement).value
-        searchedMovies = searchInputValue !== '' ?
+        searchedMovies = value !== '' ?
             [...searchedMovies, ...results] :
             [...results]
         buildMoviesCards(searchedMovies)
