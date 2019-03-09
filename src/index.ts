@@ -38,7 +38,7 @@ window.onscroll = () => infiniteScroll()
 let isExecuted: boolean = false
 // is used to track the movies now playing 
 // pages the enpoint is gonna hit 
-let i: number = 1
+let moviesNowPlayingCurrentPage: number = 1
 // track the search movies pages for infinite scrolling
 let searchedMoviesCurrentPage: number = 1
 
@@ -51,14 +51,14 @@ const infiniteScroll = () => {
         const searchInputValue =
             (document.getElementById('searchInput') as HTMLInputElement).value
         if (searchInputValue !== '') {
-            i = 1
+            moviesNowPlayingCurrentPage = 1
             searchedMoviesCurrentPage++
             searchAndDisplayMovies(searchedMoviesCurrentPage, searchInputValue)
         }
         else {
             searchedMoviesCurrentPage = 1
-            i++
-            fetchAndDisplayMovies(i)
+            moviesNowPlayingCurrentPage++
+            fetchAndDisplayMovies(moviesNowPlayingCurrentPage)
         }
 
         // After 1 second the "isExecuted" will be set to "false" to allow the code 
