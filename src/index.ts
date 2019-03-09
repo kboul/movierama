@@ -89,6 +89,8 @@ const searchAndDisplayMovies = debounce((page: number, value: string) => {
         return
     }
 
+    toggleSpinner('show')
+
     getSearchMovies(page, value).then(response => {
         const { data: { results } } = response
         searchedMovies = value !== '' ?
@@ -96,4 +98,5 @@ const searchAndDisplayMovies = debounce((page: number, value: string) => {
             [...results]
         buildMoviesCards(searchedMovies)
     })
+    toggleSpinner('hide')
 }, 1000)
