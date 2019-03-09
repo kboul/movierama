@@ -5,8 +5,8 @@ import "./styles.css"
 import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
 import { toggleSpinner } from './utils/toggleSpinner'
 import { getSearchMovies } from './services/searchMovies'
-import { buildMovieCards } from './buildDom/buildMovieCards'
-import { buildSearchInput } from './buildDom/buildSearchInput'
+import { buildMovieCards } from './renderHtml/buildMovieCards'
+import { buildSearchInput } from './renderHtml/buildSearchInput'
 import debounce from 'lodash.debounce'
 import { Movies } from './interfaces/movies'
 
