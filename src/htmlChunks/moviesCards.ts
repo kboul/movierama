@@ -2,9 +2,10 @@ import { circularBar } from "./circularBar"
 import { cardImage } from './cardImage'
 import { convertDate } from "../utils/convertDate"
 import { textDelimeter } from "../utils/textDelimeter"
+import { Movies } from '../interfaces/movies'
 
-export const moviesCard = movies => {
-    let htmlChunk = ''
+export const moviesCard = (movies: Array<Movies>): string => {
+    let htmlChunk: string = ''
 
     movies.forEach(({ vote_average, title, release_date, overview, poster_path }) => {
         const votePercentage = vote_average * 10
