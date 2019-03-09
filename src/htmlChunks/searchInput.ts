@@ -1,4 +1,4 @@
-export const searchInput = () => {
+export const searchInput = (): string => {
     return `
         <div class="input-group-prepend">
             <span 
