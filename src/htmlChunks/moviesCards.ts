@@ -3,6 +3,16 @@ import { cardImage } from './cardImage'
 import { convertDate } from "../utils/convertDate"
 import { textDelimeter } from "../utils/textDelimeter"
 import { Movies } from '../interfaces/movies'
+import { getGenres } from '../services/genres'
+import { Genres } from '../interfaces/genres'
+import { displayGenresNames } from '../utils/findGenres'
+
+let movieGenres: Array<Genres> = []
+
+getGenres().then(response => {
+    const { data: { genres } } = response
+    movieGenres = [...genres]
+})
 
 export const moviesCard = (movies: Array<Movies>): string => {
     if (movies.length === 0)
@@ -10,7 +20,7 @@ export const moviesCard = (movies: Array<Movies>): string => {
 
     let htmlChunk: string = ''
 
-    movies.forEach(({ vote_average, title, release_date, overview, poster_path }) => {
+    movies.forEach(({ vote_average, title, release_date, overview, poster_path, genre_ids }) => {
         const votePercentage = vote_average * 10
 
         htmlChunk += `
@@ -25,21 +35,17 @@ export const moviesCard = (movies: Array<Movies>): string => {
                                 ${circularBar(votePercentage)}
                             </div>
                             <div class="col-10">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <a id="movieTitle">
-                                            ${title}
-                                        </a>
-                                        <span id="date">
-                                            ${release_date ? convertDate(release_date) : ''}
-                                        </span>
-                                    </div>
-                                    <div class="col-4 text-right">
-                                        right
-                                    </div>
-                                </div>
+                                <a id="movieTitle">
+                                    ${title}
+                                </a>
+                                <span id="date">
+                                    ${release_date ? convertDate(release_date) : ''}
+                                </span>
                             </div>
                         </div>
+                       <span id="genres">
+                            ${displayGenresNames(movieGenres, genre_ids)}
+                       </span>
                         <p class="card-text mb-auto" id="overview">
                             ${textDelimeter(overview)}
                         </p>

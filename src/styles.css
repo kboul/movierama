@@ -27,7 +27,7 @@ h4 {
     color: rgb(77, 77, 77);
     font-size: 0.9em;
     line-height: 1.2em;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 #date {
@@ -81,4 +81,9 @@ p#viewMore {
     top: 50%;
     right: 50%;
     font-size: 54px
-  }
+}
+
+/* movie genres */
+#genres {
+    font-size: 12px
+}
