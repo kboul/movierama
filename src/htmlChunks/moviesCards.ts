@@ -31,7 +31,7 @@ export const moviesCard = (movies: Array<Movies>): string => {
                                             ${title}
                                         </a>
                                         <span id="date">
-                                            ${convertDate(release_date)}
+                                            ${release_date ? convertDate(release_date) : ''}
                                         </span>
                                     </div>
                                     <div class="col-4 text-right">
