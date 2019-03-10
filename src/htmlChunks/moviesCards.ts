@@ -51,6 +51,5 @@ export const moviesCard = (movies: Array<Movies>): string => {
             </div >
     `
     })
-    // console.log(htmlChunk)
     return htmlChunk
 }
