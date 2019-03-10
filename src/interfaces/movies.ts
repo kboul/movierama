@@ -4,4 +4,5 @@ export interface Movies {
     release_date: string
     overview: string
     poster_path: string
+    genre_ids: Array<number>
 }
