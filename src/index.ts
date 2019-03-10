@@ -9,6 +9,7 @@ import { buildMoviesCards } from './renderHtml/buildMoviesCards'
 import { buildSearchInput } from './renderHtml/buildSearchInput'
 import debounce from 'lodash.debounce'
 import { Movies } from './interfaces/movies'
+import { changeHeaderTitle } from './renderHtml/changeHeaderTitle'
 
 let moviesNowPlaying: Array<Movies> = []
 let searchedMovies: Array<Movies> = []
@@ -23,6 +24,7 @@ const fetchAndDisplayMovies = (page: number) => {
             [...results]
         toggleSpinner('hide')
         buildMoviesCards(moviesNowPlaying)
+        changeHeaderTitle('nowPlaying')
     })
 }
 
@@ -97,6 +99,7 @@ const searchAndDisplayMovies = debounce((page: number, value: string) => {
             [...searchedMovies, ...results] :
             [...results]
         buildMoviesCards(searchedMovies)
+        changeHeaderTitle('searchMovies')
     })
     toggleSpinner('hide')
 }, 1000)
