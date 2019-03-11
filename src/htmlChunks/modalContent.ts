@@ -3,10 +3,16 @@ import { similarMoviesCard } from './similarMoviesCard'
 import { Reviews } from '../interfaces/reviews'
 import { Movies } from '../interfaces/movies'
 import { VideoTrailer } from '../interfaces/videoTrailer'
+import { stringHtmlToDom } from "../utils/stringHtmlToDom";
 
-export const modalContent = (videos: Array<VideoTrailer>, reviews: Array<Reviews>, similarMovies: Array<Movies>) => {
-    let modalContent: HTMLElement = document.createElement('div')
-    modalContent.innerHTML = `
+export const modalContent = (
+    videos: Array<VideoTrailer>,
+    reviews: Array<Reviews>,
+    similarMovies: Array<Movies>) => {
+    let htmlChunk = ''
+
+    htmlChunk +=
+        `
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="video-trailer-tab" 
@@ -39,12 +45,11 @@ export const modalContent = (videos: Array<VideoTrailer>, reviews: Array<Reviews
                 role="tabpanel" aria-labelledby="reviews-tab">
                 ${reviewsCard(reviews)}
             </div>
-            <div class="tab-pane fade " id="similar-movies" 
+            <div class="tab-pane fade" id="similar-movies" 
                 role="tabpanel" aria-labelledby="similar-movies-tab">
                 ${similarMoviesCard(similarMovies)}
             </div>
         </div>
     `
-
-    document.getElementsByClassName('modal-window')[0].append(modalContent)
+    return stringHtmlToDom(htmlChunk)
 }

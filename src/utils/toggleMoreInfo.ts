@@ -3,7 +3,6 @@ import { removeModalFromDom } from './removeModalFromDom'
 import { modal } from '../htmlChunks/modal'
 import { buildModal } from '../renderHtml/buildModal'
 import { getReviews } from '../services/reviewsService'
-import { modalContent } from '../htmlChunks/modalContent'
 import { getSimilarMovies } from '../services/similarMoviesService';
 import { Reviews } from '../interfaces/reviews'
 import { Movies } from '../interfaces/movies'
@@ -30,9 +29,8 @@ export const toggleMoreInfo = () => {
                 videos = [...response.data.results]
             })
             removeModalFromDom()
-            buildModal(modal(movieId))
             setTimeout(() => {
-                modalContent(videos, reviews, similarMovies)
+                buildModal(modal(movieId, videos, reviews, similarMovies))
             }, 200)
         })
     })
