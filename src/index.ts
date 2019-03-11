@@ -12,9 +12,7 @@ import { buildSearchInput } from './renderHtml/buildSearchInput'
 import debounce from 'lodash.debounce'
 import { Movies } from './interfaces/movies'
 import { changeHeaderTitle } from './renderHtml/changeHeaderTitle'
-import { removeModalFromDom } from './utils/removeModal'
-import { modal } from './htmlChunks/modal'
-import { buildModal } from './renderHtml/buildModal'
+import { toggleMoreInfo } from './utils/toggleMoreInfo'
 
 let moviesNowPlaying: Array<Movies> = []
 let searchedMovies: Array<Movies> = []
@@ -30,6 +28,7 @@ const fetchAndDisplayMovies = (page: number) => {
         toggleSpinner('hide')
         buildMoviesCards(moviesNowPlaying)
         changeHeaderTitle('nowPlaying')
+        toggleMoreInfo()
     })
 }
 
@@ -51,8 +50,10 @@ let moviesNowPlayingCurrentPage: number = 1
 let searchedMoviesCurrentPage: number = 1
 
 const infiniteScroll = () => {
-    // Inside the "if" statement the "isExecuted" variable is negated to allow initial code execution.
-    if (window.scrollY > (document.body.offsetHeight - window.outerHeight) && !isExecuted) {
+    // Inside the "if" statement the "isExecuted" variable 
+    // is negated to allow initial code execution.
+    if (window.scrollY > (document.body.offsetHeight - window.outerHeight)
+        && !isExecuted) {
         // Set "isExecuted" to "true" to prevent further execution
         isExecuted = true
 
@@ -106,17 +107,7 @@ const searchAndDisplayMovies = debounce((page: number, value: string) => {
             [...results]
         buildMoviesCards(searchedMovies)
         changeHeaderTitle('searchMovies')
+        toggleMoreInfo()
     })
     toggleSpinner('hide')
 }, 1000)
-
-const toggleMoreInfo = () => {
-    const moreInfo = document.getElementsByClassName('more-info')
-    const moreInfoElements = Array.from(moreInfo)
-    moreInfoElements.forEach((el, i) => {
-        el.addEventListener('click', () => {
-            removeModalFromDom()
-            buildModal(modal(moreInfo[i].id))
-        })
-    });
-}
