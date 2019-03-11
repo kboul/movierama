@@ -36,7 +36,6 @@ fetchAndDisplayMovies(1)
 setTimeout(() => {
     buildSearchInput()
     onMoviesSearch()
-    // toggleMoreInfo()
 }, 200)
 
 window.onscroll = () => infiniteScroll()
