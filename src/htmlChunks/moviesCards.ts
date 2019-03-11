@@ -50,12 +50,12 @@ export const moviesCard = (movies: Array<Movies>): string => {
                             ${textDelimeter(overview)}
                         </p>
                         <p id="viewMore">
-                            <a>More Info</a>
+                            <a class="more-info">More Info</a>
                         </p>
-                    </div >
-                </div >
-            </div >
-    `
+                    </div>
+                </div>
+            </div>
+        `
     })
     return htmlChunk
 }

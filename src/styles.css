@@ -49,6 +49,10 @@ p#viewMore {
     font-weight: 400;
 }
 
+.more-info {
+    cursor: pointer;
+}
+
 /* progress bar */ 
 
 /* remaining-fill */
