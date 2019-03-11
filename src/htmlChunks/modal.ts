@@ -5,7 +5,6 @@ export const modal = (id: string): HTMLElement => {
     modal.innerHTML = `
         <div class="modal-window">
             <span class="close" data-dismiss="modal">&times;</span>
-            ${id}
         </div>
     `
     return modal
