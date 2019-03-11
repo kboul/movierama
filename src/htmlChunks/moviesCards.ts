@@ -3,7 +3,7 @@ import { cardImage } from './cardImage'
 import { convertDate } from "../utils/convertDate"
 import { textDelimeter } from "../utils/textDelimeter"
 import { Movies } from '../interfaces/movies'
-import { getGenres } from '../services/genres'
+import { getGenres } from '../services/genresService'
 import { Genres } from '../interfaces/genres'
 import { displayGenresNames } from '../utils/findGenres'
 
