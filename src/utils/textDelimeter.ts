@@ -1,6 +1,6 @@
 export const textDelimeter = (text: string): string => {
     const wordSplit = text.split(" ")
-    let words = []
+    let words: Array<string> = []
 
     // if the text.length is not bigger than 39 
     // return the original text
