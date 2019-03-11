@@ -1,6 +1,8 @@
 import './libs/css-circular-prog-bar'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.min.css'
+import './libs/simpleModal/simpleModal.css'
+import './libs/simpleModal/simpleModal'
 import "./styles.css"
 import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
 import { toggleSpinner } from './utils/toggleSpinner'
@@ -10,6 +12,9 @@ import { buildSearchInput } from './renderHtml/buildSearchInput'
 import debounce from 'lodash.debounce'
 import { Movies } from './interfaces/movies'
 import { changeHeaderTitle } from './renderHtml/changeHeaderTitle'
+import { removeModalFromDom } from './utils/removeModal'
+import { modal } from './htmlChunks/modal'
+import { buildModal } from './renderHtml/buildModal'
 
 let moviesNowPlaying: Array<Movies> = []
 let searchedMovies: Array<Movies> = []
@@ -32,6 +37,7 @@ fetchAndDisplayMovies(1)
 setTimeout(() => {
     buildSearchInput()
     onMoviesSearch()
+    toggleMoreInfo()
 }, 200)
 
 window.onscroll = () => infiniteScroll()
@@ -103,3 +109,14 @@ const searchAndDisplayMovies = debounce((page: number, value: string) => {
     })
     toggleSpinner('hide')
 }, 1000)
+
+const toggleMoreInfo = () => {
+    const moreInfo = document.getElementsByClassName('more-info')
+    const moreInfoElements = Array.from(moreInfo)
+    moreInfoElements.forEach((el, i) => {
+        el.addEventListener('click', () => {
+            removeModalFromDom()
+            buildModal(modal(moreInfo[i].id))
+        })
+    });
+}
