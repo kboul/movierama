@@ -57,7 +57,7 @@ export const moviesCard = (movies: Array<Movies>): string => {
                             ${textDelimeter(overview)}
                         </p>
                         <p id="viewMore">
-                            <a class="more-info">More Info</a>
+                            <a class="more-info" id="${id}">More Info</a>
                         </p>
                     </div>
                 </div>
