@@ -1,5 +1,5 @@
 export const modal = (id: string): HTMLElement => {
-    let modal = document.createElement('div')
+    let modal: HTMLElement = document.createElement('div')
     modal.id = `modal_dialog_${id}`
     modal.className = 'modal open'
     modal.innerHTML = `
