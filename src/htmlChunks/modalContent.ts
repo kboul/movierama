@@ -26,7 +26,7 @@ export const modalContent = (videos: Array<VideoTrailer>, reviews: Array<Reviews
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="video-trailer" 
                 role="tabpanel" aria-labelledby="video-trailer-tab">
-                <div class="embed-responsive embed-responsive-16by9">
+                <div class="embed-responsive embed-responsive-16by9 mt-2">
                     <iframe 
                         class="embed-responsive-item" 
                         src="https://www.youtube.com/embed/${videos[0].key}" 
