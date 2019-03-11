@@ -6,7 +6,7 @@ import './libs/simpleModal/simpleModal'
 import "./styles.css"
 import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
 import { toggleSpinner } from './utils/toggleSpinner'
-import { getSearchMovies } from './services/searchMovies'
+import { getSearchMovies } from './services/searchMoviesService'
 import { buildMoviesCards } from './renderHtml/buildMoviesCards'
 import { buildSearchInput } from './renderHtml/buildSearchInput'
 import debounce from 'lodash.debounce'
