@@ -4,6 +4,7 @@ import { Reviews } from '../interfaces/reviews'
 import { Movies } from '../interfaces/movies'
 import { VideoTrailer } from '../interfaces/videoTrailer'
 import { stringHtmlToDom } from "../utils/stringHtmlToDom"
+import { videoTrailer } from './videoTrailer'
 
 export const modalContent = (
     videos: Array<VideoTrailer>,
@@ -12,7 +13,7 @@ export const modalContent = (
     let htmlChunk = ''
 
     htmlChunk += `
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs id="tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="#video-trailer">Video Trailer</a>
             </li>
@@ -25,14 +26,7 @@ export const modalContent = (
         </ul>
         <div class="tab-content">
             <div id="video-trailer" class="container tab-pane active">
-                <div class="embed-responsive embed-responsive-16by9 mt-2">
-                    <iframe 
-                        class="embed-responsive-item" 
-                        src="https://www.youtube.com/embed/${videos[0].key}" 
-                        frameborder="0" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+                ${videoTrailer(videos)}
             </div>
             <div id="reviews" class="container tab-pane fade">
                 ${reviewsCard(reviews)}
