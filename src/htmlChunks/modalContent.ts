@@ -1,7 +1,7 @@
-import { card } from "./card"
+import { reviewsCard } from "./reviewsCard"
+import { similarMoviesCard } from './similarMoviesCard'
 import { Reviews } from '../interfaces/reviews'
 import { Movies } from '../interfaces/movies'
-import { similarMoviesCard } from './similarMoviesCard'
 
 export const modalContent = (reviews: Array<Reviews>, similarMovies: Array<Movies>) => {
     let modalContent: HTMLElement = document.createElement('div')
@@ -16,7 +16,7 @@ export const modalContent = (reviews: Array<Reviews>, similarMovies: Array<Movie
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                ${card(reviews)}
+                ${reviewsCard(reviews)}
             </div>
             <div class="tab-pane fade show active" id="similar-movies" role="tabpanel" aria-labelledby="similar-movies-tab">
                 ${similarMoviesCard(similarMovies)}
