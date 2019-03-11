@@ -23,5 +23,5 @@ export const reviewsCard = (reviews: Array<Reviews>) => {
             </div>
         `
     })
-    stringHtmlToDom(htmlChunk)
+    return stringHtmlToDom(htmlChunk)
 }
