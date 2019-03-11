@@ -1,7 +1,6 @@
 import { Movies } from '../interfaces/movies'
 
 export const similarMoviesCard = (similarMovies: Array<Movies>) => {
-    console.log(similarMovies)
     if (similarMovies.length === 0)
         return '<p class="mt-2">No similar movies found for this movie.</p>'
 
