@@ -29,7 +29,7 @@ export const moviesCard = (movies: Array<Movies>): string => {
         genre_ids,
         id
     }) => {
-        const votePercentage = vote_average * 10
+        const votePercentage: number = vote_average * 10
 
         htmlChunk += `
             <div class="col-md-6">
