@@ -1,5 +1,6 @@
 import { textDelimeter } from '../utils/textDelimeter'
 import { Reviews } from '../interfaces/reviews'
+import { stringHtmlToDom } from '../utils/stringHtmlToDom'
 
 export const reviewsCard = (reviews: Array<Reviews>) => {
     if (reviews.length === 0) return '<p class="mt-2">No reviews for this movie.</p>'
@@ -19,8 +20,6 @@ export const reviewsCard = (reviews: Array<Reviews>) => {
                 </div>
             </div>
         `
-    });
-
-    const xmlString: any = new DOMParser().parseFromString(htmlChunk, "text/html");
-    return xmlString.firstChild.innerHTML
+    })
+    stringHtmlToDom(htmlChunk)
 }

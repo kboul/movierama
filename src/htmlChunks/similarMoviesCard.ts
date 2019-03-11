@@ -1,4 +1,5 @@
 import { Movies } from '../interfaces/movies'
+import { stringHtmlToDom } from '../utils/stringHtmlToDom'
 
 export const similarMoviesCard = (similarMovies: Array<Movies>) => {
     if (similarMovies.length === 0)
@@ -23,7 +24,5 @@ export const similarMoviesCard = (similarMovies: Array<Movies>) => {
             </div>
         `
     });
-
-    const xmlString: any = new DOMParser().parseFromString(htmlChunk, "text/html");
-    return xmlString.firstChild.innerHTML
+    stringHtmlToDom(htmlChunk)
 }
