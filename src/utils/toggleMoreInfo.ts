@@ -3,7 +3,7 @@ import { removeModalFromDom } from './removeModalFromDom'
 import { modal } from '../htmlChunks/modal'
 import { buildModal } from '../renderHtml/buildModal'
 import { getReviews } from '../services/reviewsService'
-import { getSimilarMovies } from '../services/similarMoviesService';
+import { getSimilarMovies } from '../services/similarMoviesService'
 import { Reviews } from '../interfaces/reviews'
 import { Movies } from '../interfaces/movies'
 import { getVideoTrailer } from '../services/videoTrailerService'
@@ -31,6 +31,11 @@ export const toggleMoreInfo = () => {
             removeModalFromDom()
             setTimeout(() => {
                 buildModal(modal(movieId, videos, reviews, similarMovies))
+                $(document).ready(function () {
+                    $(".nav-tabs a").click(function () {
+                        ($(this) as any).tab('show')
+                    })
+                })
             }, 200)
         })
     })
