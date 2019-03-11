@@ -7,6 +7,8 @@ import { modalContent } from '../htmlChunks/modalContent'
 import { getSimilarMovies } from '../services/similarMoviesService';
 import { Reviews } from '../interfaces/reviews'
 import { Movies } from '../interfaces/movies'
+import { getVideoTrailer } from '../services/videoTrailerService'
+import { VideoTrailer } from '../interfaces/videoTrailer'
 
 // makes sures DOM is not polluted with multiples modal elements
 // and renders the appropriate every time based on clicked movie id
@@ -14,18 +16,23 @@ export const toggleMoreInfo = () => {
     const moreInfo = document.getElementsByClassName('more-info')
     Array.from(moreInfo).forEach((el: HTMLElement) => {
         el.addEventListener('click', () => {
+            const movieId = el.id
             let reviews: Array<Reviews> = []
             let similarMovies: Array<Movies> = []
-            getSimilarMovies(el.id).then(response => {
+            let videos: Array<VideoTrailer> = []
+            getSimilarMovies(movieId).then(response => {
                 similarMovies = [...response.data.results]
             })
-            getReviews(el.id).then(response => {
+            getReviews(movieId).then(response => {
                 reviews = [...response.data.results]
             })
+            getVideoTrailer(movieId).then(response => {
+                videos = [...response.data.results]
+            })
             removeModalFromDom()
-            buildModal(modal(el.id))
-            setTimeout(()=> {
-                modalContent(reviews, similarMovies)
+            buildModal(modal(movieId))
+            setTimeout(() => {
+                modalContent(videos, reviews, similarMovies)
             }, 200)
         })
     })
