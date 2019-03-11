@@ -4,12 +4,12 @@ import 'font-awesome/css/font-awesome.min.css'
 import './libs/simpleModal/simpleModal.css'
 import './libs/simpleModal/simpleModal'
 import "./styles.css"
+import debounce from 'lodash.debounce'
 import { getMoviesNowPlaying } from './services/moviesNowPlayingService'
 import { toggleSpinner } from './utils/toggleSpinner'
 import { getSearchMovies } from './services/searchMoviesService'
 import { buildMoviesCards } from './renderHtml/buildMoviesCards'
 import { buildSearchInput } from './renderHtml/buildSearchInput'
-import debounce from 'lodash.debounce'
 import { Movies } from './interfaces/movies'
 import { changeHeaderTitle } from './renderHtml/changeHeaderTitle'
 import { toggleMoreInfo } from './utils/toggleMoreInfo'
@@ -36,7 +36,7 @@ fetchAndDisplayMovies(1)
 setTimeout(() => {
     buildSearchInput()
     onMoviesSearch()
-    toggleMoreInfo()
+    // toggleMoreInfo()
 }, 200)
 
 window.onscroll = () => infiniteScroll()
