@@ -8,17 +8,31 @@ export const modalContent = (reviews: Array<Reviews>, similarMovies: Array<Movie
     modalContent.innerHTML = `
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home" >Home</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" >Reviews</a>
-                <a class="nav-item nav-link active" id="similar-movies-tab" data-toggle="tab" role="tab" aria-controls="similar-movies">Similar Movies</a>
+                <a class="nav-item nav-link active" id="video-trailer-tab" 
+                    data-toggle="tab" role="tab" aria-controls="video-trailer">
+                    Video Trailer
+                </a>
+                <a class="nav-item nav-link" id="reviews-tab" 
+                    data-toggle="tab" role="tab" aria-controls="reviews">
+                    Reviews
+                </a>
+                <a class="nav-item nav-link" id="similar-movies-tab" 
+                    data-toggle="tab" role="tab" aria-controls="similar-movies">
+                    Similar Movies
+                </a>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="tab-pane fade show active" id="video-trailer" 
+                role="tabpanel" aria-labelledby="video-trailer-tab">
+                ...
+            </div>
+            <div class="tab-pane fade " id="reviews" 
+                role="tabpanel" aria-labelledby="reviews-tab">
                 ${reviewsCard(reviews)}
             </div>
-            <div class="tab-pane fade show active" id="similar-movies" role="tabpanel" aria-labelledby="similar-movies-tab">
+            <div class="tab-pane fade " id="similar-movies" 
+                role="tabpanel" aria-labelledby="similar-movies-tab">
                 ${similarMoviesCard(similarMovies)}
             </div>
         </div>
