@@ -3,7 +3,9 @@ import { Reviews } from '../interfaces/reviews'
 import { stringHtmlToDom } from '../utils/stringHtmlToDom'
 
 export const reviewsCard = (reviews: Array<Reviews>) => {
-    if (reviews.length === 0) return '<p class="mt-2">No reviews for this movie.</p>'
+    if (reviews.length === 0)
+        return '<p class="mt-2">No reviews found for this movie.</p>'
+
     let htmlChunk = ''
     reviews.forEach((review, i) => {
         if (i > 1) return

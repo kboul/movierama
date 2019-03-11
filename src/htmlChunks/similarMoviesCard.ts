@@ -3,7 +3,7 @@ import { stringHtmlToDom } from '../utils/stringHtmlToDom'
 
 export const similarMoviesCard = (similarMovies: Array<Movies>) => {
     if (similarMovies.length === 0)
-        return '<p class="mt-2">No similar movies found for this movie.</p>'
+        return '<p class="mt-2">No similar movies found.</p>'
 
     let htmlChunk = ''
     similarMovies.forEach((movie, i) => {
