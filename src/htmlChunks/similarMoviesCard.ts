@@ -23,6 +23,6 @@ export const similarMoviesCard = (similarMovies: Array<Movies>) => {
                 </div>
             </div>
         `
-    });
+    })
     return stringHtmlToDom(htmlChunk)
 }

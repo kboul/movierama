@@ -1,8 +1,8 @@
 
-import { modalContent } from './modalContent';
-import { VideoTrailer } from '../interfaces/videoTrailer';
-import { Reviews } from '../interfaces/reviews';
-import { Movies } from '../interfaces/movies';
+import { modalContent } from './modalContent'
+import { VideoTrailer } from '../interfaces/videoTrailer'
+import { Reviews } from '../interfaces/reviews'
+import { Movies } from '../interfaces/movies'
 
 export const modal = (
     id: string,

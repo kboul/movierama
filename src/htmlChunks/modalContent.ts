@@ -3,7 +3,7 @@ import { similarMoviesCard } from './similarMoviesCard'
 import { Reviews } from '../interfaces/reviews'
 import { Movies } from '../interfaces/movies'
 import { VideoTrailer } from '../interfaces/videoTrailer'
-import { stringHtmlToDom } from "../utils/stringHtmlToDom";
+import { stringHtmlToDom } from "../utils/stringHtmlToDom"
 
 export const modalContent = (
     videos: Array<VideoTrailer>,
