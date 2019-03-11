@@ -20,7 +20,14 @@ export const moviesCard = (movies: Array<Movies>): string => {
 
     let htmlChunk: string = ''
 
-    movies.forEach(({ vote_average, title, release_date, overview, poster_path, genre_ids, id }) => {
+    movies.forEach(({
+        vote_average,
+        title,
+        release_date,
+        overview,
+        poster_path,
+        genre_ids,
+        id }) => {
         const votePercentage = vote_average * 10
 
         htmlChunk += `
