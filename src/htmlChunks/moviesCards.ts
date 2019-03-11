@@ -27,7 +27,8 @@ export const moviesCard = (movies: Array<Movies>): string => {
         overview,
         poster_path,
         genre_ids,
-        id }) => {
+        id
+    }) => {
         const votePercentage = vote_average * 10
 
         htmlChunk += `
@@ -53,11 +54,17 @@ export const moviesCard = (movies: Array<Movies>): string => {
                        <span id="genres">
                             ${displayGenresNames(movieGenres, genre_ids)}
                        </span>
-                        <p class="card-text mb-auto" id="overview">
+                        <p 
+                            class="card-text mb-auto" 
+                            id="overview">
                             ${textDelimeter(overview)}
                         </p>
                         <p id="viewMore">
-                            <a class="more-info" id="${id}">More Info</a>
+                            <a 
+                                class="more-info" 
+                                id="${id}">
+                                More Info
+                            </a>
                         </p>
                     </div>
                 </div>
