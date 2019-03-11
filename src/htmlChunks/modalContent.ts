@@ -11,27 +11,20 @@ export const modalContent = (
     similarMovies: Array<Movies>) => {
     let htmlChunk = ''
 
-    htmlChunk +=
-        `
-        <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="video-trailer-tab" 
-                    data-toggle="tab" role="tab" aria-controls="video-trailer">
-                    Video Trailer
-                </a>
-                <a class="nav-item nav-link" id="reviews-tab" 
-                    data-toggle="tab" role="tab" aria-controls="reviews">
-                    Reviews
-                </a>
-                <a class="nav-item nav-link" id="similar-movies-tab" 
-                    data-toggle="tab" role="tab" aria-controls="similar-movies">
-                    Similar Movies
-                </a>
-            </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="video-trailer" 
-                role="tabpanel" aria-labelledby="video-trailer-tab">
+    htmlChunk += `
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#video-trailer">Video Trailer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#reviews">Reviews</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#similar-movies">Similar Movies</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="video-trailer" class="container tab-pane active">
                 <div class="embed-responsive embed-responsive-16by9 mt-2">
                     <iframe 
                         class="embed-responsive-item" 
@@ -41,12 +34,10 @@ export const modalContent = (
                     </iframe>
                 </div>
             </div>
-            <div class="tab-pane fade" id="reviews" 
-                role="tabpanel" aria-labelledby="reviews-tab">
+            <div id="reviews" class="container tab-pane fade">
                 ${reviewsCard(reviews)}
             </div>
-            <div class="tab-pane fade" id="similar-movies" 
-                role="tabpanel" aria-labelledby="similar-movies-tab">
+            <div id="similar-movies" class="container tab-pane fade">
                 ${similarMoviesCard(similarMovies)}
             </div>
         </div>
