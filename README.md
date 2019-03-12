@@ -19,3 +19,9 @@ npm start
 ``` 
 
 browser listens to localhost:1234 as default port
+
+## Test the project
+
+```
+npx jest
+```
