@@ -36,7 +36,7 @@ export const toggleMoreInfo = () => {
                         ($(this) as any).tab('show')
                     })
                 })
-            }, 200)
+            }, 1000)
         })
     })
 }
