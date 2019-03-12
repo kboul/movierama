@@ -7,7 +7,7 @@ export const similarMoviesCard = (similarMovies: Array<Movies>) => {
 
     let htmlChunk = ''
     similarMovies.forEach((movie, i) => {
-        if (i > 3) return
+        if (i > 1) return
 
         htmlChunk += `
             <div id="accordion">
