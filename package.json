@@ -6,7 +6,8 @@
     "scripts": {
         "start": "parcel index.html --open",
         "build": "parcel build index.html",
-        "test": "jest --watchAll"
+        "test": "jest --watchAll",
+        "test:coverage": "jest --coverage"
     },
     "dependencies": {
         "@types/jquery": "^3.3.29",
