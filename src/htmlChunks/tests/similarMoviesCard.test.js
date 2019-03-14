@@ -25,3 +25,9 @@ it('creates a card element with correct movie title & movie overview', () => {
     expect(parentDiv.querySelector('b').textContent).toContain(movie[0].title)
     expect(parentDiv.querySelector('.card-text').textContent).toContain(movie[0].overview)
 })
+it('shows a relevant message on the UI when similar movies are not provided', () => {
+    const stringHtml = similarMoviesCard([])
+    const parentDiv = document.createElement('div')
+    parentDiv.innerHTML = stringHtml
+    expect(parentDiv.innerHTML).toContain('No similar movies found.')
+})
