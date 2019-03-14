@@ -21,7 +21,6 @@ let imageHtmlElement
 beforeAll(() => {
     const stringHtml = cardImage(posterPath)
     const parentDiv = document.createElement('div')
-    parentDiv.id = 'testImage'
     parentDiv.innerHTML = stringHtml
     imageHtmlElement = parentDiv.querySelector('img')
 })
