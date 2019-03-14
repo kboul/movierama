@@ -23,5 +23,10 @@ browser listens to localhost:1234 as default port
 ## Test the project
 
 ```
-npx jest
+npx jest or npm test
+```
+
+## Test coverage
+```
+npm run test:coverage
 ```
