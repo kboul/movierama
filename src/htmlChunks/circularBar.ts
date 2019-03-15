@@ -1,7 +1,7 @@
 const chooseVoteColor = (votePercentage: number): string => {
     return `
-        ${votePercentage > 70 ? '#09b962' :
-            votePercentage > 0 && votePercentage <= 70 ? '#d2d531' :
+        ${votePercentage > 70 ? 'rgb(9, 185, 98)' :
+            votePercentage > 0 && votePercentage <= 70 ? 'rgb(210, 213, 49)' :
                 'rgb(128, 128, 128)'}
     `
 }
