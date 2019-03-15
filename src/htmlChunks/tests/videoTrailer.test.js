@@ -3,17 +3,8 @@
  */
 
 const { videoTrailer } = require('../videoTrailer')
-
-const validUtubeVideoUrl = utubeVideoUrl => {
-    const regExp = new RegExp(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/)
-    const match = utubeVideoUrl.match(regExp)
-    return match && match[2].length == 11
-}
-
-const video = [{
-    'id': "5ba0f7589251417f27019c33",
-    'key': 'Z1BCujX3pw8'
-}]
+const { validUtubeVideoUrl } = require('../../utilsForTests/validUtubeVideoUrl')
+const { video } = require('../../utilsForTests/video')
 
 it('contains an iframe element with a valid utube video url when video is provided', () => {
     const stringHtml = videoTrailer(video)
