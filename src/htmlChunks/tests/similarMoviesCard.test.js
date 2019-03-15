@@ -11,10 +11,11 @@ it('creates 2 cards elements with correct movie title & movie overview', () => {
     parentDiv.innerHTML = stringHtml
     expect(parentDiv.querySelector('.card').children).toHaveLength(2)
     movies.forEach((movie, i) => {
-        expect(parentDiv.querySelectorAll('b')[i]
-            .textContent).toContain(movie.title)
-        expect(parentDiv.querySelectorAll('.card-text')[i]
-            .textContent).toContain(movie.overview)
+        if (i > 1) return
+        expect(parentDiv.querySelectorAll('.card-header')[i].textContent)
+            .toContain(movie.title)
+        expect(parentDiv.querySelectorAll('.card-text')[i].textContent)
+            .toContain(movie.overview)
     })
 })
 
