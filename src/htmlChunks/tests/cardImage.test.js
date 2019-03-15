@@ -3,22 +3,12 @@
  */
 
 const { cardImage } = require('../cardImage')
-
-const posterPath = 'AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg'
-
-const validURL = str => {
-    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
-    return !!pattern.test(str)
-}
+const { validURL } = require('../../utilsForTests/validURL')
 
 let imageHtmlElement
 
 beforeAll(() => {
+    const posterPath = 'AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg'
     const stringHtml = cardImage(posterPath)
     const parentDiv = document.createElement('div')
     parentDiv.innerHTML = stringHtml
