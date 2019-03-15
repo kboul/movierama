@@ -4,10 +4,10 @@
 
 const { videoTrailer } = require('../videoTrailer')
 const { validUtubeVideoUrl } = require('../../utilsForTests/validUtubeVideoUrl')
-const { video } = require('../../utilsForTests/video')
+const { videos } = require('../../utilsForTests/videos')
 
 it('contains an iframe element with a valid utube video url when video is provided', () => {
-    const stringHtml = videoTrailer(video)
+    const stringHtml = videoTrailer(videos)
     const parentDiv = document.createElement('div')
     parentDiv.innerHTML = stringHtml
     const videoHtmlElement = parentDiv.querySelector('iframe')
