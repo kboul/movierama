@@ -10,8 +10,10 @@ it('creates 2 cards elements with correct movie title & movie overview', () => {
     const parentDiv = document.createElement('div')
     parentDiv.innerHTML = stringHtml
     expect(parentDiv.querySelector('.card').children).toHaveLength(2)
-    expect(parentDiv.querySelector('b').textContent).toContain(movies[0].title)
-    expect(parentDiv.querySelector('.card-text').textContent).toContain(movies[0].overview)
+    movies.forEach((movie, i) => {
+        expect(parentDiv.querySelectorAll('b')[i].textContent).toContain(movie.title)
+        expect(parentDiv.querySelectorAll('.card-text')[i].textContent).toContain(movie.overview)
+    })
 })
 
 it('shows a relevant message on the UI when similar movies are not provided', () => {
