@@ -3,6 +3,7 @@
  */
 
 const { stringHtmlToDom } = require('../stringHtmlToDom')
+const { validHtml } = require('../../utilsForTests/validHtml')
 
 let parentDiv
 
@@ -17,7 +18,7 @@ beforeEach(() => {
 })
 
 it('returns a vald html element', () => {
-    expect(parentDiv.innerHTML).toBeTruthy()
+    expect(validHtml(parentDiv.innerHTML)).toBeTruthy()
 })
 
 it('has a class nav-item', () => {
