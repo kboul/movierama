@@ -9,7 +9,7 @@ import { Movies } from '../interfaces/movies'
 import { getVideoTrailer } from '../services/videoTrailerService'
 import { VideoTrailer } from '../interfaces/videoTrailer'
 
-// makes sures DOM is not polluted with multiples modal elements
+// makes sure DOM is not polluted with multiple modal elements
 // and renders the appropriate every time based on clicked movie id
 export const toggleMoreInfo = () => {
     const moreInfo = document.getElementsByClassName('more-info')
