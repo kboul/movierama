@@ -14,7 +14,7 @@ getGenres().then(response => {
     movieGenres = [...genres]
 })
 
-export const moviesCard = (movies: Array<Movies>): string => {
+export const moviesCards = (movies: Array<Movies>): string => {
     if (movies.length === 0)
         return 'No movies found. Please insert another keyword.'
 
