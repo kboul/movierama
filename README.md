@@ -63,3 +63,9 @@ On the upper page part of now playing movies screen there is a search bar. The u
 ```
 npm run build
 ```
+
+## Deploy the project
+
+```
+npm run deploy
+```
