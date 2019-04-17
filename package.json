@@ -7,7 +7,9 @@
         "start": "parcel index.html --open",
         "build": "parcel build index.html",
         "test": "jest --watchAll",
-        "test:coverage": "jest --coverage"
+        "test:coverage": "jest --coverage",
+        "predeploy": "rm -rf dist && parcel build index.html --public-url /movierama/",
+        "deploy": "gh-pages -d dist"
     },
     "dependencies": {
         "@types/jquery": "^3.3.29",
@@ -19,6 +21,7 @@
     "devDependencies": {
         "@babel/core": "7.2.0",
         "@types/jest": "^24.0.11",
+        "gh-pages": "^2.0.1",
         "handlebars": "^4.1.2",
         "jest": "^24.4.0",
         "js-yaml": "^3.13.1",
