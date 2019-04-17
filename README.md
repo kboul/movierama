@@ -57,3 +57,9 @@ By clicking on the **More Info** a modal is displayed. It has 3 tabs:
 By clicking on each tab the user can see the selected movie's video trailer, read up to two reviews concering the movie and receive up to two similar movies suggestions.
 
 On the upper page part of now playing movies screen there is a search bar. The user can type a movie there and receive all relevant movies' information in card form similarly to now playing movies screen. More Info link can be similarly clicked and watch a video trailer, reviews & similar movies sections.  
+
+## Build the project
+
+```
+npm run build
+```
