@@ -4,13 +4,14 @@ h4 {
     margin-top: 20px;
 }
 
-#cardContainer, h4 {
+#cardContainer,
+h4 {
     font-family: 'Source Sans Pro';
 }
 
 /* movies cards */
 #infoBox {
-    padding: 10px 16px 16px 16px
+    padding: 10px 16px 16px 16px;
 }
 
 #movieTitle {
@@ -31,7 +32,7 @@ h4 {
 }
 
 #date {
-    color: rgba(0,0,0,0.6);
+    color: rgba(0, 0, 0, 0.6);
     line-height: 1em;
 }
 
@@ -53,16 +54,16 @@ p#viewMore {
     cursor: pointer;
 }
 
-/* progress bar */ 
+/* progress bar */
 
 /* remaining-fill */
 .progress-circle {
-    background-color: rgb(128, 128, 128); 
+    background-color: rgb(128, 128, 128);
     font-size: 8px;
     margin: 0px;
 }
 
-.progress-circle:after{
+.progress-circle:after {
     background-color: black;
 }
 
@@ -84,10 +85,10 @@ p#viewMore {
     z-index: 1031;
     top: 50%;
     right: 50%;
-    font-size: 54px
+    font-size: 54px;
 }
 
 /* movie genres */
 #genres {
-    font-size: 12px
+    font-size: 12px;
 }

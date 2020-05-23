@@ -1,37 +1,40 @@
-import { circularBar } from "./circularBar"
-import { cardImage } from './cardImage'
-import { convertDate } from "../utils/convertDate"
-import { textDelimeter } from "../utils/textDelimeter"
-import { Movies } from '../interfaces/movies'
-import { getGenres } from '../services/genresService'
-import { Genres } from '../interfaces/genres'
-import { displayGenresNames } from '../utils/findGenres'
+import { circularBar } from './circularBar';
+import { cardImage } from './cardImage';
+import { convertDate } from '../utils/convertDate';
+import { textDelimeter } from '../utils/textDelimeter';
+import { Movies } from '../interfaces/movies';
+import { getGenres } from '../services/genresService';
+import { Genres } from '../interfaces/genres';
+import { displayGenresNames } from '../utils/findGenres';
 
-let movieGenres: Array<Genres> = []
+let movieGenres: Array<Genres> = [];
 
-getGenres().then(response => {
-    const { data: { genres } } = response
-    movieGenres = [...genres]
-})
+getGenres().then((response) => {
+    const {
+        data: { genres },
+    } = response;
+    movieGenres = [...genres];
+});
 
-export const moviesCard = (movies: Array<Movies>): string => {
+export const moviesCards = (movies: Array<Movies>): string => {
     if (movies.length === 0)
-        return 'No movies found. Please insert another keyword.'
+        return 'No movies found. Please insert another keyword.';
 
-    let htmlChunk: string = ''
+    let htmlChunk: string = '';
 
-    movies.forEach(({
-        vote_average,
-        title,
-        release_date,
-        overview,
-        poster_path,
-        genre_ids,
-        id
-    }) => {
-        const votePercentage: number = vote_average * 10
+    movies.forEach(
+        ({
+            vote_average,
+            title,
+            release_date,
+            overview,
+            poster_path,
+            genre_ids,
+            id,
+        }) => {
+            const votePercentage: number = vote_average * 10;
 
-        htmlChunk += `
+            htmlChunk += `
             <div class="col-md-6">
                 <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col-auto d-none d-lg-block">
@@ -47,7 +50,11 @@ export const moviesCard = (movies: Array<Movies>): string => {
                                     ${title}
                                 </a>
                                 <span id="date">
-                                    ${release_date ? convertDate(release_date) : ''}
+                                    ${
+                                        release_date
+                                            ? convertDate(release_date)
+                                            : ''
+                                    }
                                 </span>
                             </div>
                         </div>
@@ -69,7 +76,8 @@ export const moviesCard = (movies: Array<Movies>): string => {
                     </div>
                 </div>
             </div>
-        `
-    })
-    return htmlChunk
-}
+        `;
+        }
+    );
+    return htmlChunk;
+};

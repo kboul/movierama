@@ -13,5 +13,5 @@ export const searchInput = (): string => {
             placeholder="Search for a movie..." 
             aria-label="Search"
             aria-describedby="addon-wrapping">
-    `
-}
+    `;
+};
