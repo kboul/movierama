@@ -5,19 +5,28 @@
     "main": "index.html",
     "scripts": {
         "start": "parcel index.html --open",
-        "build": "parcel build index.html"
+        "build": "parcel build index.html",
+        "test": "jest --watchAll",
+        "test:coverage": "jest --coverage",
+        "predeploy": "rm -rf dist && parcel build index.html --public-url /movierama/",
+        "deploy": "gh-pages -d dist"
     },
     "dependencies": {
-        "@types/jquery": "^3.3.29",
-        "axios": "^0.18.0",
-        "bootstrap": "^4.3.1",
+        "@types/jquery": "^3.5.1",
+        "axios": "^0.20.0",
+        "bootstrap": "^4.5.2",
         "font-awesome": "^4.7.0",
         "lodash.debounce": "^4.0.8"
     },
     "devDependencies": {
-        "@babel/core": "7.2.0",
-        "parcel-bundler": "^1.6.1",
-        "typescript": "^3.2.4"
+        "@babel/core": "7.11.6",
+        "@types/jest": "^26.0.14",
+        "gh-pages": "^3.1.0",
+        "jest": "^26.4.2",
+        "js-yaml": "^3.14.0",
+        "parcel-bundler": "^1.12.4",
+        "ts-jest": "^26.3.0",
+        "typescript": "^4.0.3"
     },
     "keywords": []
 }
