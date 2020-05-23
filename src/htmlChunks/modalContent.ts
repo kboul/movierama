@@ -1,16 +1,17 @@
-import { reviewsCard } from "./reviewsCard"
-import { similarMoviesCard } from './similarMoviesCard'
-import { Reviews } from '../interfaces/reviews'
-import { Movies } from '../interfaces/movies'
-import { VideoTrailer } from '../interfaces/videoTrailer'
-import { stringHtmlToDom } from "../utils/stringHtmlToDom"
-import { videoTrailer } from './videoTrailer'
+import { reviewsCard } from './reviewsCard';
+import { similarMoviesCard } from './similarMoviesCard';
+import { Reviews } from '../interfaces/reviews';
+import { Movies } from '../interfaces/movies';
+import { VideoTrailer } from '../interfaces/videoTrailer';
+import { stringHtmlToDom } from '../utils/stringHtmlToDom';
+import { videoTrailer } from './videoTrailer';
 
 export const modalContent = (
     videos: Array<VideoTrailer>,
     reviews: Array<Reviews>,
-    similarMovies: Array<Movies>) => {
-    let htmlChunk = ''
+    similarMovies: Array<Movies>
+) => {
+    let htmlChunk = '';
 
     htmlChunk += `
         <ul class="nav nav-tabs id="tabs">
@@ -35,6 +36,6 @@ export const modalContent = (
                 ${similarMoviesCard(similarMovies)}
             </div>
         </div>
-    `
-    return stringHtmlToDom(htmlChunk)
-}
+    `;
+    return stringHtmlToDom(htmlChunk);
+};
