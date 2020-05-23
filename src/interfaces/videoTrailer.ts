@@ -1,5 +1,5 @@
 export interface VideoTrailer {
-    id: string
-    key: string
-    name: string
+    id: string;
+    key: string;
+    name: string;
 }

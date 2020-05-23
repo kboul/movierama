@@ -10,10 +10,12 @@ const months: Array<string> = [
     'September',
     'October',
     'November',
-    'December'
-]
+    'December',
+];
 
 export const convertDate = (releaseDate: string): string => {
-    const temp_date = releaseDate.split('-')
-    return `${months[Number(temp_date[1]) - 1]} ${temp_date[2]}, ${temp_date[0]}`
-}
+    const temp_date = releaseDate.split('-');
+    return `${months[Number(temp_date[1]) - 1]} ${temp_date[2]}, ${
+        temp_date[0]
+    }`;
+};

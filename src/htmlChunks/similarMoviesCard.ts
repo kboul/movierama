@@ -1,13 +1,13 @@
-import { Movies } from '../interfaces/movies'
-import { stringHtmlToDom } from '../utils/stringHtmlToDom'
+import { Movies } from '../interfaces/movies';
+import { stringHtmlToDom } from '../utils/stringHtmlToDom';
 
 export const similarMoviesCard = (similarMovies: Array<Movies>) => {
     if (similarMovies.length === 0)
-        return '<p class="mt-2">No similar movies found.</p>'
+        return '<p class="mt-2">No similar movies found.</p>';
 
-    let htmlChunk = ''
+    let htmlChunk = '';
     similarMovies.forEach((movie, i) => {
-        if (i > 1) return
+        if (i > 1) return;
 
         htmlChunk += `
             <div id="accordion">
@@ -22,7 +22,7 @@ export const similarMoviesCard = (similarMovies: Array<Movies>) => {
                     </div>
                 </div>
             </div>
-        `
-    })
-    return stringHtmlToDom(htmlChunk)
-}
+        `;
+    });
+    return stringHtmlToDom(htmlChunk);
+};
