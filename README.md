@@ -12,11 +12,11 @@ select master branch
 Navigate to the root folder:
 
 ```
-npm install
+yarn install
 ```
 
 ```
-npm start
+yarn start
 ```
 
 browser listens to localhost:1234 as default port
@@ -24,7 +24,7 @@ browser listens to localhost:1234 as default port
 ## Test the project
 
 ```
-npx jest or npm test
+yarn test
 ```
 
 Get the project's test coverage
